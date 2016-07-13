@@ -17,7 +17,7 @@ def getMemberInfo(classID = '1404052'):
     page = BeautifulSoup(response, 'html.parser')
     studentList = []
     studentList.append(list(map(lambda x:str(x.string), page.find_all('table')[1].find_all('td', recursive = False)[1:4])))
-    db = MySQLdb.connect(charset='utf8', host='localhost', user='root', passwd='NakatsuShizuru#2', db='sabrina')
+    db = MySQLdb.connect(charset='utf8', host='localhost', user='root', passwd='PASSWORD', db='sabrina')
     for row in page.find_all('table')[1].find_all('tr')[1:-1]:
         rowData = row.find_all('td', recursive = False)[1:4]
         rowList = list(map(lambda x:str(x.string), rowData))
@@ -34,7 +34,7 @@ def getResultInfo(studentID, termID):
     reqData = request.Request(loginer.BASE_URL + RESULTINFO_METHOD, data = postData, headers = {'Cookie': cookie})
     response = request.urlopen(reqData).read().decode('GBK')
     page = BeautifulSoup(response, 'html.parser')
-    db = MySQLdb.connect(charset='utf8', host='localhost', user='root', passwd='NakatsuShizuru#2', db='sabrina')
+    db = MySQLdb.connect(charset='utf8', host='localhost', user='root', passwd='PASSWORD', db='sabrina')
     for row in page.find_all('table')[4].find_all('tr')[1:]:
         rowList = row.find_all('td')
         if rowList[0].string==None:
@@ -61,7 +61,7 @@ def getResultInfo(studentID, termID):
 
 classes = ['1404051', '1404052', '1404053']
 cookie = loginer.Login()
-db = MySQLdb.connect(charset='utf8', host='localhost', user='root', passwd='NakatsuShizuru#2', db='sabrina')
+db = MySQLdb.connect(charset='utf8', host='localhost', user='root', passwd='PASSWORD', db='sabrina')
 
 c = db.cursor()
 c.execute('SELECT id FROM student')
