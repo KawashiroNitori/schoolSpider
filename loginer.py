@@ -8,8 +8,8 @@ from eventlet.green.http import cookiejar
 from bs4 import BeautifulSoup
 
 BASE_URL = 'http://jwc.sut.edu.cn/'
-DEFAULT_USER_ID = '11858'
-DEFAULT_PASSWORD = '128888'
+DEFAULT_USER_ID = 'username'
+DEFAULT_PASSWORD = 'pass'
 
 def getCaptcha(captchaImage):
     tool = pyocr.get_available_tools()[0]
